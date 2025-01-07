@@ -80,6 +80,25 @@ void SimpleRotary::setDebounceDelay(int i)
 
 
 /**
+	SET SWITCH DEBOUNCE DELAY
+	Sets the debounce delay time for the encoder's switch in milliseconds.
+
+	This number shold be set as small as possible to maintain responsiveness while avoiding spurious activations. 
+	Higher values can cause missed inputs, especially with fast or repeated presses.
+	Finding this value will vary from one rotary encoder to another and can be found simply with
+	trial and error.
+	
+	You can turn this feature off by setting the delay value to 0.
+
+	@since v1.1.4;
+**/
+void SimpleRotary::setSwitchDebounceDelay(int i)
+{
+  _debounceSDelay = i;
+}
+
+
+/**
 	SET ERROR CORRECTION DELAY
 	Sets the error correction delay delay time in milliseconds.
 	
@@ -143,15 +162,14 @@ byte SimpleRotary::rotate()
 
 /**
 	GET BUTTON PUSH
-	Gets the status of the pushbutton
+ 	Gets the status of the switch.
 	
-	Returned values
-	0x00 = Not turned.
-	0x01 = Clockwise;
-	0x02 = Counter-Clockwise
-	
-	@since v0.1;
-	@return byte, value of turned knob.
+ 	Returned values:
+ 	0x00 = Button not pressed.
+ 	0x01 = Button pressed.
+
+ 	@since v0.1
+	@return byte, status of the switch.
 **/
 byte SimpleRotary::push(){
 	_updateTime();

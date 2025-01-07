@@ -14,6 +14,7 @@ class SimpleRotary
 	byte pushType(int i);
     void setTrigger(byte i);
     void setDebounceDelay(int i);
+    void setSwitchDebounceDelay(int i);
     void setErrorDelay(int i);
 	void resetPush();
 	
